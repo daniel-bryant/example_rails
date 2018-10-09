@@ -15,6 +15,10 @@ port        ENV.fetch("PORT") { 3000 }
 #
 environment ENV.fetch("RAILS_ENV") { "development" }
 
+# Redirect logs to stdout
+# https://gist.github.com/andrius/7c26a8deef10f3105a136f958b0d582d
+stdout_redirect(stdout = '/dev/stdout', stderr = '/dev/stderr', append = true)
+
 # Specifies the number of `workers` to boot in clustered mode.
 # Workers are forked webserver processes. If using threads and workers together
 # the concurrency of the application would be max `threads` * `workers`.
