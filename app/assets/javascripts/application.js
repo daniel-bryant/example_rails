@@ -14,3 +14,18 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+function addPeople(people) {
+  for (var i = 0; i < people.length; i++) {
+    const peopleDiv = document.getElementById('people')
+    const personDiv = document.createElement('div')
+    personDiv.innerHTML = people[i].Name
+    peopleDiv.append(personDiv)
+  }
+}
+
+window.onload = function() {
+  fetch('http://localhost:3001/people')
+  .then(response => response.json())
+  .then(json => addPeople(json));
+}
