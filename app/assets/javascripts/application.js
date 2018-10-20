@@ -24,8 +24,21 @@ function addPeople(people) {
   }
 }
 
+function addCompanies(companies) {
+  for (var i = 0; i < companies.length; i++) {
+    const parentDiv = document.getElementById('companies')
+    const companyDiv = document.createElement('div')
+    companyDiv.innerHTML = companies[i].name + " - " + companies[i].city
+    parentDiv.append(companyDiv)
+  }
+}
+
 window.onload = function() {
   fetch('http://localhost:3001/people')
   .then(response => response.json())
   .then(json => addPeople(json));
+
+  fetch('http://localhost:3002/companies')
+  .then(response => response.json())
+  .then(json => addCompanies(json));
 }
